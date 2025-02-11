@@ -1,0 +1,41 @@
+name: Run Journey Tests on GitHub
+
+permissions:
+  checks: write
+  pull-requests: write
+
+on:
+  workflow_dispatch:
+  workflow_call:
+jobs:
+  build:
+    name: run-tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Setup the tests
+        run: npm i
+      - name: Start docker compose
+        run: docker compose up --wait-timeout 300 -d --quiet-pull
+      - name: Run the tests
+        run: |
+          npm run test:github
+          npm run report
+      - name: upload artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: ./allure-report
+      - name: debug
+        if: failure()
+        run: |
+          docker compose logs > logs.txt
+          docker ps
