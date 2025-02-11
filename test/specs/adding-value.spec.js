@@ -5,8 +5,8 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
 
 (async function addingValueAccessibility() {
   const options = process.env.ENVIRONMENT ? {
-    hostname: process.env.CHROMEDRIVER_URL,
-    port: process.env.CHROMEDRIVER_PORT,
+    hostname: process.env.CHROMEDRIVER_URL || '127.0.0.1',
+    port: process.env.CHROMEDRIVER_PORT || 4444,
     capabilities: {
       browserName: 'chrome',
       'goog:chromeOptions': {
