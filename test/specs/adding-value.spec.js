@@ -1,8 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-
 import { remote } from 'webdriverio'
 import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from './wcagchecker.cjs'
 
@@ -37,31 +34,39 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
   }
 
   const browser = await remote(options);
+  console.log('browser instantiated')
 
   try {
     await init(browser)
+    console.log('accessibility initialised')
 
     await browser.url('https://forms-runner-v2.test.cdp-int.defra.cloud/adding-value/start')
     await analyse(browser, '')
+    console.log('first page analysed')
 
     await browser.$(`//*[contains(text(),'Start now')]`).click()
     await analyse(browser, '')
-
+    console.log('second page analysed')
   } finally {
-    browser.closeWindow()
+    browser.deleteSession()
 
     const outputDirectory = path.join('./reports');
 
     if (!fs.existsSync(outputDirectory)) {
       fs.mkdirSync(outputDirectory);
+      console.log(`created directory: ${outputDirectory}`)
     }
 
     fs.writeFileSync(path.join(outputDirectory, 'accessibility_category.html'), getHtmlReportByCategory(), (err) => {
       if (err) throw err;
     })
 
+    console.log('generated first report')
+
     fs.writeFileSync(path.join(outputDirectory, 'accessibility_guideline.html'), getHtmlReportByGuideLine(), (err) => {
       if (err) throw err;
     })
+
+    console.log('generated second report')
   }
 })();
