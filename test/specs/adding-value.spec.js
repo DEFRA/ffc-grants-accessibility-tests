@@ -52,7 +52,7 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
     await analyse(browser, '')
     console.log('second page analysed')
   } catch(err) {
-    console.log(err)
+    console.log(`ERROR: ${JSON.stringify(err)}`)
     throw err
   } finally {
     browser.deleteSession()
