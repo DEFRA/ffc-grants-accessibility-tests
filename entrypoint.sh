@@ -1,15 +1,9 @@
 #!/bin/sh
 
 echo "run_id: $RUN_ID"
-npm test
+node ./test/specs/adding-value.spec.js
 
-npm run report:publish
-publish_exit_code=$?
-
-if [ $publish_exit_code -ne 0 ]; then
-  echo "failed to publish test results"
-  exit $publish_exit_code
-fi
+./bin/publish-tests.sh
 
 # At the end of the test run, if the suite has failed we write a file called 'FAILED'
 if [ -f FAILED ]; then
