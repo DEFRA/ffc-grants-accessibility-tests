@@ -11,3 +11,5 @@ coverage
 allure-report/
 allure-results/
 FAILED
+accessibility_category.html
+accessibility_guideline.html
