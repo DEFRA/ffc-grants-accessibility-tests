@@ -33,6 +33,7 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
     }
   }
 
+  console.log('instantiating browser')
   const browser = await remote(options);
   console.log('browser instantiated')
 
