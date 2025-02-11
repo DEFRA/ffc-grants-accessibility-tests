@@ -34,6 +34,9 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
   }
 
   console.log('instantiating browser')
+  console.log(`process.env.ENVIRONMENT ${process.env.ENVIRONMENT}`)
+  console.log(`process.env.CHROMEDRIVER_URL ${process.env.CHROMEDRIVER_URL}`)
+  console.log(`process.env.CHROMEDRIVER_PORT ${process.env.CHROMEDRIVER_PORT}`)
   const browser = await remote(options);
   console.log('browser instantiated')
 
