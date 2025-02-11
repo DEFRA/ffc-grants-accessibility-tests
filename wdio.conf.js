@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 
+const debug = process.env.DEBUG
 const oneMinute = 60 * 1000
 
 export const config = {
