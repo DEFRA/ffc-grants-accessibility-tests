@@ -51,6 +51,9 @@ import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from
     await browser.$(`//*[contains(text(),'Start now')]`).click()
     await analyse(browser, '')
     console.log('second page analysed')
+  } catch(err) {
+    console.log(err)
+    throw err
   } finally {
     browser.deleteSession()
 
