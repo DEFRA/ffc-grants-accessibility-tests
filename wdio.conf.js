@@ -73,7 +73,7 @@ export const config = {
               '--disable-remote-fonts',
               '--ignore-certificate-errors',
               '--disable-dev-shm-usage',
-              '--host-resolver-rules=MAP sareportingpoc.blob.core.windows.net localhost:3128'
+              '--host-resolver-rules=MAP sareportingpoc.blob.core.windows.net 127.0.0.1:3128'
             ]
           }
         }
