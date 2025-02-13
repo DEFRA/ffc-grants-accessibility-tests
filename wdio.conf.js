@@ -49,31 +49,34 @@ export const config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome',
-        proxy: {
+    capabilities: [
+        {
+          browserName: 'chrome',
+          // Outbound calls must go via the proxy
+          proxy: {
             proxyType: 'manual',
             httpProxy: 'localhost:3128',
             sslProxy: 'localhost:3128'
-        },
-        'goog:chromeOptions': {
+          },
+          'goog:chromeOptions': {
             args: [
-                '--no-sandbox',
-                '--disable-infobars',
-                '--headless',
-                '--disable-gpu',
-                '--window-size=1920,1080',
-                '--enable-features=NetworkService,NetworkServiceInProcess',
-                '--password-store=basic',
-                '--use-mock-keychain',
-                '--dns-prefetch-disable',
-                '--disable-background-networking',
-                '--disable-remote-fonts',
-                '--ignore-certificate-errors',
-                '--disable-dev-shm-usage'
+              '--no-sandbox',
+              '--disable-infobars',
+              '--headless',
+              '--disable-gpu',
+              '--window-size=1920,1080',
+              '--enable-features=NetworkService,NetworkServiceInProcess',
+              '--password-store=basic',
+              '--use-mock-keychain',
+              '--dns-prefetch-disable',
+              '--disable-background-networking',
+              '--disable-remote-fonts',
+              '--ignore-certificate-errors',
+              '--disable-dev-shm-usage'
             ]
+          }
         }
-    }],
+      ],
     //
     // ===================
     // Test Configurations
