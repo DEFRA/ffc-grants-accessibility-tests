@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo "run_id: $RUN_ID"
-node ./test/specs/adding-value.spec.js
+
+npx wdio run ./wdio.conf.js
 
 ./bin/publish-tests.sh
 
