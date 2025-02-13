@@ -14,7 +14,11 @@ export async function initialiseAccessibilityChecking() {
 }
 
 export async function analyseAccessibility() {
-    await analyse(browser)
+    try {
+        await analyse(browser)
+    } catch(error) {
+        console.log(`ERROR: ${error}`)
+    }
 }
 
 export function generateAccessibilityReports(filePrefix) {
