@@ -1,3 +1,4 @@
+import { setGlobalDispatcher, ProxyAgent } from "undici";
 import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
 
 export const config = {
@@ -212,8 +213,12 @@ export const config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: async function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+      if (process.env.HTTP_PROXY) {
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+        setGlobalDispatcher(new ProxyAgent({ uri: process.env.HTTP_PROXY }));
+      }
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
