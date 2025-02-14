@@ -174,11 +174,8 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    onPrepare: function (config, capabilities) {
-      bootstrapGlobalAgent()
-      global.GLOBAL_AGENT.HTTP_PROXY = 'http://localhost:3128'
-      global.GLOBAL_AGENT.HTTPS_PROXY = 'http://localhost:3128'
-    },
+    // onPrepare: function (config, capabilities) {
+    // },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -216,8 +213,11 @@ export const config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: async function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+      bootstrapGlobalAgent()
+      global.GLOBAL_AGENT.HTTP_PROXY = 'http://localhost:3128'
+      global.GLOBAL_AGENT.HTTPS_PROXY = 'http://localhost:3128'
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
