@@ -215,8 +215,7 @@ export const config = {
      */
     before: async function (capabilities, specs) {
       if (process.env.HTTP_PROXY) {
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-        setGlobalDispatcher(new ProxyAgent({ uri: process.env.HTTP_PROXY }));
+        setGlobalDispatcher(new ProxyAgent({ uri: process.env.HTTP_PROXY }))
       }
     },
     /**
