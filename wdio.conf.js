@@ -1,3 +1,4 @@
+import { bootstrap as bootstrapGlobalAgent } from 'global-agent'
 import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
 
 export const config = {
@@ -173,8 +174,10 @@ export const config = {
      * @param {object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+      bootstrapGlobalAgent()
+      global.GLOBAL_AGENT.HTTP_PROXY = process.env.HTTP_PROXY || 'http://localhost:3128'
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
      * for that worker as well as modify runtime environments in an async fashion.
