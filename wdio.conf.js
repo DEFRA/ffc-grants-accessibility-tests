@@ -1,4 +1,3 @@
-import { bootstrap as bootstrapGlobalAgent } from 'global-agent'
 import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
 
 export const config = {
@@ -213,11 +212,8 @@ export const config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    before: async function (capabilities, specs) {
-      bootstrapGlobalAgent()
-      global.GLOBAL_AGENT.HTTP_PROXY = 'http://localhost:3128'
-      global.GLOBAL_AGENT.HTTPS_PROXY = 'http://localhost:3128'
-    },
+    // before: async function (capabilities, specs) {
+    // },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
