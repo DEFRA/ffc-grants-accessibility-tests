@@ -1,17 +1,12 @@
-function proxyFetch(url, options) {
-    const proxyUrlConfig = process.env.HTTP_PROXY
-
-    if (!proxyUrlConfig) {
-        return fetch(url, options)
+function proxyFetch(url) {
+    if (!process.env.HTTP_PROXY) {
+        return fetch(url)
     }
 
     return fetch(url, {
-        ...options,
-        dispatcher: new ProxyAgent({
-            uri: proxyUrlConfig,
-            keepAliveTimeout: 10,
-            keepAliveMaxTimeout: 10
-        })
+        dispatcher: {
+            uri: process.env.HTTP_PROXY
+        }
     })
 }
 
