@@ -1,4 +1,5 @@
 import { browser } from '@wdio/globals'
+import { ProxyAgent } from 'undici'
 import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from './wcagchecker.cjs'
 import fs from 'fs'
 import path from 'path'
@@ -10,7 +11,10 @@ export async function initialiseAccessibilityChecking() {
         fs.mkdirSync(reportDirectory);
     }
 
-    await init(browser)    
+    const fetchViaProxy = (url) =>
+        process.env.HTTP_PROXY ? fetch(url, new ProxyAgent({ uri: process.env.HTTP_PROXY })) : fetch(url)
+
+    await init(browser, fetchViaProxy)    
 }
 
 export async function analyseAccessibility() {
@@ -27,7 +31,6 @@ export function generateAccessibilityReports(filePrefix) {
 }
 
 export function generateAccessibilityReportIndex() {
-    return;
     const filenames = fs.readdirSync(reportDirectory)
 
     const html = `
