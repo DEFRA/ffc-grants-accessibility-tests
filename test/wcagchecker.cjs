@@ -1,13 +1,7 @@
 function proxyFetch(url) {
-    console.log('process.env.HTTP_PROXY ' + process.env.HTTP_PROXY)
-    
-    if (!process.env.HTTP_PROXY) {
-        return fetch(url)
-    }
-
     return fetch(url, {
         dispatcher: {
-            uri: process.env.HTTP_PROXY
+            uri: 'http://localhost:3128'
         }
     })
 }
