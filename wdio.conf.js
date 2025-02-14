@@ -52,7 +52,6 @@ export const config = {
     capabilities: [
         {
           browserName: 'chrome',
-          // Outbound calls must go via the proxy
           proxy: {
             proxyType: 'manual',
             httpProxy: 'localhost:3128',
@@ -72,8 +71,7 @@ export const config = {
               '--disable-background-networking',
               '--disable-remote-fonts',
               '--ignore-certificate-errors',
-              '--disable-dev-shm-usage',
-              '--host-resolver-rules=MAP cdn.jsdelivr.net 127.0.0.1:3128,MAP sareportingpoc.blob.core.windows.net 127.0.0.1:3128'
+              '--disable-dev-shm-usage'
             ]
           }
         }
