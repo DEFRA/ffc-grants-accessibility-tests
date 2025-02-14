@@ -176,7 +176,8 @@ export const config = {
      */
     onPrepare: function (config, capabilities) {
       bootstrapGlobalAgent()
-      global.GLOBAL_AGENT.HTTP_PROXY = process.env.HTTP_PROXY || 'http://localhost:3128'
+      global.GLOBAL_AGENT.HTTP_PROXY = 'http://localhost:3128'
+      global.GLOBAL_AGENT.HTTPS_PROXY = 'http://localhost:3128'
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialize specific service
