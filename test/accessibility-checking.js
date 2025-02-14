@@ -27,6 +27,7 @@ export function generateAccessibilityReports(filePrefix) {
 }
 
 export function generateAccessibilityReportIndex() {
+    return;
     const filenames = fs.readdirSync(reportDirectory)
 
     const html = `

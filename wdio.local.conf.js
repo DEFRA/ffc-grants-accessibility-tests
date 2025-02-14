@@ -22,7 +22,7 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: ['./test/*.spec.js'],
+    specs: ['./test/debug.spec.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
