@@ -17,8 +17,5 @@
     "@wdio/spec-reporter": "9.9.0",
     "axe-core": "^4.10.2",
     "date-fns": "^4.1.0"
-  },
-  "dependencies": {
-    "undici": "6.21.1"
   }
 }

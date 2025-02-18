@@ -1,5 +1,4 @@
 import { browser } from '@wdio/globals'
-import { ProxyAgent } from 'undici'
 import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from './wcagchecker.cjs'
 import fs from 'fs'
 import path from 'path'
@@ -11,13 +10,7 @@ export async function initialiseAccessibilityChecking() {
         fs.mkdirSync(reportDirectory);
     }
 
-    const fetchFn = url => process.env.HTTP_PROXY ? fetch(url, new ProxyAgent({ uri: process.env.HTTP_PROXY })) : fetch(url)
-    const response = await fetchFn('https://sareportingpoc.blob.core.windows.net/wcag/wave.min.js')
-    if (!response.ok) {
-        throw new Error(`Failed to download Wave rules script with response status: ${response.status}`)
-    }
-    const waveScript = await response.text()
-
+    const waveScript = fs.readFileSync('./test/wave.min.js', { encoding: 'utf8', flag: 'r' })
     await init(browser, waveScript)
 }
 
