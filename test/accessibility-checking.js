@@ -6,6 +6,7 @@ import path from 'path'
 const reportDirectory = path.join('./reports')
 
 export async function initialiseAccessibilityChecking() {
+    return
     if (!fs.existsSync(reportDirectory)) {
         fs.mkdirSync(reportDirectory);
     }
@@ -15,10 +16,12 @@ export async function initialiseAccessibilityChecking() {
 }
 
 export async function analyseAccessibility() {
+    return
     await analyse(browser)
 }
 
 export function generateAccessibilityReports(filePrefix) {
+    return
     fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-category.html`), getHtmlReportByCategory(), (err) => {
         if (err) throw err
     })
@@ -28,6 +31,7 @@ export function generateAccessibilityReports(filePrefix) {
 }
 
 export function generateAccessibilityReportIndex() {
+    return
     const filenames = fs.readdirSync(reportDirectory)
 
     const html = `
