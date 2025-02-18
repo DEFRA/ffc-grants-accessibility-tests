@@ -1,6 +1,6 @@
 import { browser } from '@wdio/globals'
-import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from './accessibility-checking.js'
-import { continueJourney, navigateBack, selectOption, startJourney } from './journey-actions.js'
+import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
+import { continueJourney, navigateBack, selectOption, startJourney } from '../journey-actions.js'
 
 describe('Adding Value', () => {
   it('should analyse accessibility on all Adding Value pages', async () => {

@@ -1,6 +1,6 @@
 import { browser } from '@wdio/globals'
-import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from './accessibility-checking.js'
-import { continueJourney, navigateBack, selectOption, startJourney, submitApplication } from './journey-actions.js'
+import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
+import { continueJourney, navigateBack, selectOption, startJourney, submitApplication } from '../journey-actions.js'
 
 describe('Example Grant', () => {
   it('should analyse accessibility on all Example Grant pages', async () => {

@@ -1,4 +1,4 @@
-import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
+import { generateAccessibilityReportIndex } from './test/accessibility/accessibility-checking.js'
 
 export const config = {
     //
@@ -22,7 +22,7 @@ export const config = {
     // The path of the spec files will be resolved relative from the directory of
     // of the config file unless it's absolute.
     //
-    specs: ['./test/*.spec.js'],
+    specs: ['./test/specs/*.spec.js'],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'

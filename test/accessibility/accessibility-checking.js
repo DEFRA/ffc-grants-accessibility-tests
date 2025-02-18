@@ -10,7 +10,7 @@ export async function initialiseAccessibilityChecking() {
         fs.mkdirSync(reportDirectory);
     }
 
-    const waveScript = fs.readFileSync('./test/wave.min.js', { encoding: 'utf8', flag: 'r' })
+    const waveScript = fs.readFileSync('./test/accessibility/wave.min.js', { encoding: 'utf8', flag: 'r' })
     await init(browser, waveScript)
 }
 
