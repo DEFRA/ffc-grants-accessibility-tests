@@ -11,10 +11,14 @@ export async function initialiseAccessibilityChecking() {
         fs.mkdirSync(reportDirectory);
     }
 
-    const fetchViaProxy = (url) =>
-        process.env.HTTP_PROXY ? fetch(url, new ProxyAgent({ uri: process.env.HTTP_PROXY })) : fetch(url)
+    const fetchFn = url => process.env.HTTP_PROXY ? fetch(url, new ProxyAgent({ uri: process.env.HTTP_PROXY })) : fetch(url)
+    const response = await fetchFn('https://sareportingpoc.blob.core.windows.net/wcag/wave.min.js')
+    if (!response.ok) {
+        throw new Error(`Failed to download Wave rules script with response status: ${response.status}`)
+    }
+    const waveScript = await response.text()
 
-    await init(browser, fetchViaProxy)    
+    await init(browser, waveScript)
 }
 
 export async function analyseAccessibility() {
@@ -25,7 +29,7 @@ export function generateAccessibilityReports(filePrefix) {
     fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-category.html`), getHtmlReportByCategory(), (err) => {
         if (err) throw err
     })
-    fs.writeFileSync(path.join(reportDirectory,`${filePrefix}-accessibility-guideline.html`), getHtmlReportByGuideLine(), (err) => {
+    fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-guideline.html`), getHtmlReportByGuideLine(), (err) => {
         if (err) throw err;
     })
 }
