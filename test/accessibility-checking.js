@@ -34,13 +34,36 @@ export function generateAccessibilityReportIndex() {
         <html>
             <head>
                 <title>Accessibility Reports</title>
+                <style>
+                    h2 {
+                        color: rgb(11, 12, 12);
+                        font-family: 'GDS Transport', arial, sans-serif;
+                        font-size: 29.7px;
+                        font-weight: 700;
+                        height: 33px;
+                        line-height: 33px;
+                        margin-bottom: 10px;
+                        text-size-adjust: 100%;
+                        -webkit-font-smoothing: antialiased;
+                    }                
+                    a {
+                        color: #1d70b8;
+                        font-family: 'GDS Transport', arial, sans-serif;
+                        font-size: 15.675px;
+                        font-weight: 400;
+                        -webkit-font-smoothing: antialiased;
+                    }
+                </style>
             </head>
             <body>
-                ${filenames.map(f => `<p><a href="${f}">${f}</a>`)}
+                <h2>Accessibility Reports</h2>
+                <ul>
+                ${filenames.map(f => `<li><a href="${f}">${f}</a></li>`).join('')}
+                </ul>
             </body>
         </html>
         `
-    fs.writeFileSync(path.join(reportDirectory, `index.html`), html, (err) => {
+    fs.writeFileSync(path.join(reportDirectory, 'index.html'), html, (err) => {
         if (err) throw err
     })
 }
