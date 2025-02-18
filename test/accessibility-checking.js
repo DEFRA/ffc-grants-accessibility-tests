@@ -35,17 +35,6 @@ export function generateAccessibilityReportIndex() {
             <head>
                 <title>Accessibility Reports</title>
                 <style>
-                    h2 {
-                        color: rgb(11, 12, 12);
-                        font-family: 'GDS Transport', arial, sans-serif;
-                        font-size: 29.7px;
-                        font-weight: 700;
-                        height: 33px;
-                        line-height: 33px;
-                        margin-bottom: 10px;
-                        text-size-adjust: 100%;
-                        -webkit-font-smoothing: antialiased;
-                    }                
                     a {
                         color: #1d70b8;
                         font-family: 'GDS Transport', arial, sans-serif;
@@ -56,7 +45,6 @@ export function generateAccessibilityReportIndex() {
                 </style>
             </head>
             <body>
-                <h2>Accessibility Reports</h2>
                 <ul>
                 ${filenames.map(f => `<li><a href="${f}">${f}</a></li>`).join('')}
                 </ul>
