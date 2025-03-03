@@ -1,6 +1,6 @@
 import { browser } from '@wdio/globals'
 import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
-import { continueJourney, navigateBack, selectOption, startJourney } from '../journey-actions.js'
+import { continueJourney, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
 
 describe('Adding Value', () => {
   it('should analyse accessibility on all Adding Value pages', async () => {
@@ -27,7 +27,7 @@ describe('Adding Value', () => {
 
     // what-is-the-legal-status-of-the-business
     await analyseAccessibility()
-    await selectOption('None of the above'),
+    await selectOption('None of the above')
     await continueJourney()
 
     // you-cannot-apply-for-a-grant-from-this-scheme-legal-status
@@ -58,10 +58,15 @@ describe('Adding Value', () => {
 
     // adding-value
     await analyseAccessibility()
+    await selectOption('Introducing a new product to your farm')
     await continueJourney()
 
     // project-impact
     await analyseAccessibility()
+    await selectOptions([
+      'Increasing range of added-value products',
+      'Increasing volume of added-value products'
+    ])
     await continueJourney()
 
     // future-customers

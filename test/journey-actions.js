@@ -8,8 +8,14 @@ export async function navigateBack() {
     await $(`//a[@class='govuk-back-link']`).click()
 }
 
-export async function selectOption(text) {
-    await $(`//label[contains(text(),'${text}')]/preceding-sibling::input`).click()
+export async function selectOption(option) {
+    await $(`//label[contains(text(),'${option}')]/preceding-sibling::input`).click()
+}
+
+export async function selectOptions(options) {
+    for (let option of options) {
+        await $(`//label[contains(text(),'${option}')]/preceding-sibling::input`).click()
+    }
 }
 
 export async function startJourney() {
@@ -17,5 +23,5 @@ export async function startJourney() {
 }
 
 export async function submitApplication() {
-    await $(`//button[contains(text(),'Send')]`).click()    
+    await $(`//button[contains(text(),'Send')]`).click()
 }

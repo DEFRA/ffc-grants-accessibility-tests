@@ -1,5 +1,5 @@
 import { browser } from '@wdio/globals'
-import { init, analyse, getHtmlReportByCategory, getHtmlReportByGuideLine } from './wcagchecker.cjs'
+import * as wcagChecker from './wcagchecker.cjs'
 import fs from 'fs'
 import path from 'path'
 
@@ -11,20 +11,22 @@ export async function initialiseAccessibilityChecking() {
     }
 
     const waveScript = fs.readFileSync('./test/accessibility/wave.min.js', { encoding: 'utf8', flag: 'r' })
-    await init(browser, waveScript)
+    await wcagChecker.init(browser, waveScript)
 }
 
 export async function analyseAccessibility() {
-    await analyse(browser)
+    await wcagChecker.analyse(browser)
 }
 
 export function generateAccessibilityReports(filePrefix) {
-    fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-category.html`), getHtmlReportByCategory(), (err) => {
+    fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-category.html`), wcagChecker.getHtmlReportByCategory(), (err) => {
         if (err) throw err
     })
-    fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-guideline.html`), getHtmlReportByGuideLine(), (err) => {
+    fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-guideline.html`), wcagChecker.getHtmlReportByGuideLine(), (err) => {
         if (err) throw err;
     })
+
+    
 }
 
 export function generateAccessibilityReportIndex() {
