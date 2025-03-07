@@ -14,8 +14,8 @@ export async function initialiseAccessibilityChecking() {
     await wcagChecker.init(browser, waveScript)
 }
 
-export async function analyseAccessibility() {
-    await wcagChecker.analyse(browser)
+export async function analyseAccessibility(suffix) {    
+    await wcagChecker.analyse(browser, suffix)
 }
 
 export function generateAccessibilityReports(filePrefix) {
@@ -24,9 +24,7 @@ export function generateAccessibilityReports(filePrefix) {
     })
     fs.writeFileSync(path.join(reportDirectory, `${filePrefix}-accessibility-guideline.html`), wcagChecker.getHtmlReportByGuideLine(), (err) => {
         if (err) throw err;
-    })
-
-    
+    })    
 }
 
 export function generateAccessibilityReportIndex() {
