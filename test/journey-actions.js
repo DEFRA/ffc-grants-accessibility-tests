@@ -5,7 +5,7 @@ export async function continueJourney() {
 }
 
 export async function enterValueFor(text, label) {
-    await $(`aria/${label}`).setValue(text)
+    await $(`//label[contains(text(),'${label}')]/following::input[@type='text']`).setValue(text)  
 } 
 
 export async function navigateBack() {
