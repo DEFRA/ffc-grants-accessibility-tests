@@ -59,12 +59,22 @@ describe('Adding Value', () => {
 
     // what-is-the-estimated-cost-of-the-items
     await analyseAccessibility()
+    
     await continueJourney()
     await analyseAccessibility('[validation-no-value]')
+
     await enterValueFor('ABC', 'Enter amount')
-    await analyseAccessibility('[validation-invalid-format]')
-    await enterValueFor('62499.999', 'Enter amount')
-    await analyseAccessibility('[validation-invalid-excess-decimals]')
+    await analyseAccessibility('[validation-format]')
+
+    await enterValueFor('62499.99', 'Enter amount')
+    await analyseAccessibility('[validation-decimals]')
+
+    await enterValueFor('12345678', 'Enter amount')
+    await analyseAccessibility('[validation-max-number]')
+
+    await enterValueFor('0', 'Enter amount')
+    await analyseAccessibility('[validation-min-number]')
+
     await enterValueFor('62500', 'Enter amount')
     await continueJourney()
 
