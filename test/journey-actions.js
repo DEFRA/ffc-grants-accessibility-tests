@@ -1,11 +1,21 @@
 import { $ } from '@wdio/globals'
 
+export async function confirmAndSend() {
+    await $(`aria/Confirm and send`).click()
+}
+
 export async function continueJourney() {
     await $(`aria/Continue`).click()
 }
 
 export async function enterValueFor(text, label) {
-    await $(`//label[contains(text(),'${label}')]/following::input[@type='text']`).setValue(text)  
+    const selector = `//label[contains(text(),'${label}')]/following::*[name()='input' or name()='select'][1]`
+    const tag = await $(selector).getTagName()
+    if (tag === 'select') {
+        await $(selector).selectByVisibleText(text)
+    } else {
+        await $(selector).setValue(text)
+    }
 } 
 
 export async function navigateBack() {

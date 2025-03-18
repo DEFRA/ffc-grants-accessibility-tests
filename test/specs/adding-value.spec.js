@@ -1,6 +1,6 @@
 import { browser } from '@wdio/globals'
 import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
-import { continueJourney, enterValueFor, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
+import { confirmAndSend, continueJourney, enterValueFor, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
 
 describe('Adding Value', () => {
   it('should analyse accessibility on all Adding Value pages', async () => {
@@ -59,7 +59,7 @@ describe('Adding Value', () => {
 
     // what-is-the-estimated-cost-of-the-items
     await analyseAccessibility()
-    
+        
     await continueJourney()
     await analyseAccessibility('[validation-no-value]')
 
@@ -130,6 +130,65 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // score-results
+    await analyseAccessibility()
+    await continueJourney()
+
+    // business-details
+    await analyseAccessibility()
+    await continueJourney()
+
+    // who-is-applying-for-this-grant
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Agent')
+    await continueJourney()
+
+    // agent-details
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await enterValueFor('John', 'First name')
+    await enterValueFor('Test-Agent', 'Last name')
+    await enterValueFor('Test Agency Ltd', 'Business name')
+    await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Email address')
+    await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Confirm email address')
+    await enterValueFor('07777 654321', 'Mobile number')
+    await enterValueFor('01604 654321', 'Landline number')
+    await enterValueFor('High Street', 'Address line 1')
+    await enterValueFor('Denton', 'Address line 2 (optional)')
+    await enterValueFor('Northampton', 'Town')
+    await enterValueFor('Northamptonshire', 'County')
+    await enterValueFor('NN7 3NN', 'Postcode')
+    await continueJourney()
+
+    // applicant-details
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await enterValueFor('James', 'First name')
+    await enterValueFor('Test-Farmer', 'Last name')
+    await enterValueFor('cl-defra-gae-test-applicant-email@equalexperts.com', 'Email address')
+    await enterValueFor('cl-defra-gae-test-applicant-email@equalexperts.com', 'Confirm email address')
+    await enterValueFor('07777 123456', 'Mobile number')
+    await enterValueFor('01604 123456', 'Landline number')
+    await enterValueFor('Test Farm', 'Address line 1')
+    await enterValueFor('Cogenhoe', 'Address line 2 (optional)')
+    await enterValueFor('Northampton', 'Town')
+    await enterValueFor('Northamptonshire', 'County')
+    await enterValueFor('NN7 1NN', 'Business postcode')
+    await enterValueFor('NN7 2NN', 'Project postcode')
+    await continueJourney()
+
+    // check-your-details
+    await analyseAccessibility()
+    await continueJourney()
+
+    // declaration
+    await analyseAccessibility()
+    await confirmAndSend()
+
+    // status
     await analyseAccessibility()
 
     generateAccessibilityReports('adding-value')
