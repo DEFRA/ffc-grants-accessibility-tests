@@ -188,7 +188,7 @@ describe('Adding Value', () => {
     await analyseAccessibility()
     await confirmAndSend()
 
-    // status
+    // confirmation
     await analyseAccessibility()
 
     generateAccessibilityReports('adding-value')
