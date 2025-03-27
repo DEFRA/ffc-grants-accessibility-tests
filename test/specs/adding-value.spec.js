@@ -158,7 +158,7 @@ describe('Adding Value', () => {
     await enterValueFor('High Street', 'Address line 1')
     await enterValueFor('Denton', 'Address line 2 (optional)')
     await enterValueFor('Northampton', 'Town')
-    await enterValueFor('Northamptonshire', 'County')
+    await enterValueFor('Northamptonshire', 'County (optional)')
     await enterValueFor('NN7 3NN', 'Postcode')
     await continueJourney()
 
@@ -175,8 +175,8 @@ describe('Adding Value', () => {
     await enterValueFor('Test Farm', 'Address line 1')
     await enterValueFor('Cogenhoe', 'Address line 2 (optional)')
     await enterValueFor('Northampton', 'Town')
-    await enterValueFor('Northamptonshire', 'County')
-    await enterValueFor('NN7 1NN', 'Business postcode')
+    await enterValueFor('Northamptonshire', 'County (optional)')
+    await enterValueFor('NN7 1NN', 'Postcode')
     await enterValueFor('NN7 2NN', 'Project postcode')
     await continueJourney()
 
