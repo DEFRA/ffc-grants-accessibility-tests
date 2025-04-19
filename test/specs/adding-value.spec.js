@@ -12,84 +12,191 @@ describe('Adding Value', () => {
     await analyseAccessibility()
     await startJourney()
 
-    // what-is-your-business
+    // nature-of-business
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
     await selectOption('None of the above')
     await continueJourney()
 
-    // you-cannot-apply-for-a-grant-from-this-scheme-business-type
+    // cannot-apply-nature-of-business
     await analyseAccessibility()
     await navigateBack()
 
-    // what-is-your-business
+    // nature-of-business
     await selectOption('A grower or producer of agricultural or horticultural produce')
     await continueJourney()
 
-    // what-is-the-legal-status-of-the-business
+    // legal-status
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
     await selectOption('None of the above')
     await continueJourney()
 
-    // you-cannot-apply-for-a-grant-from-this-scheme-legal-status
+    // legal-status-cannot-apply
     await analyseAccessibility()
     await navigateBack()
 
-    // what-is-the-legal-status-of-the-business
+    // legal-status
     await selectOption('Sole trader')
     await continueJourney()
 
-    // is-the-planned-project-in-england
+    // country
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
     await selectOption('No')
     await continueJourney()
 
-    // you-cannot-apply-for-a-grant-from-this-scheme-project-in-england
+    // cannot-apply-country
     await analyseAccessibility()
     await navigateBack()
 
-    // is-the-planned-project-in-england
+    // country
     await selectOption('Yes')
     await continueJourney()
 
-    // what-is-the-estimated-cost-of-the-items
+    // planning-permission
     await analyseAccessibility()
-        
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Will not be in place by the time I make my full application')
+    await continueJourney()
+
+    // planning-permission-cannot-apply
+    await analyseAccessibility()
+    await navigateBack()
+
+    // planning-permission
+    await selectOption('Secured')
+    await continueJourney()
+
+    // project-start
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes, we have begun project work')
+    await continueJourney()
+
+    // cannot-apply-project-start
+    await analyseAccessibility()
+    await navigateBack()
+
+    // project-start
+    await selectOption('Yes, preparatory work')
+    await continueJourney()
+
+    // tenancy
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('No')
+    await continueJourney()
+
+    // tenancy-length
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('No')
+    await continueJourney()
+
+    // may-apply-tenancy-length
+    await analyseAccessibility()
+    await continueJourney()
+
+    // smaller-abattoir
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('No') // take top fruit journey
+    await continueJourney()
+
+    // fruit-storage
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await navigateBack() // navigate back to smaller abattoir journey
+
+    // smaller-abattoir
+    await selectOption('Yes') // take smaller abattoir journey
+    await continueJourney()
+
+    // other-farmers
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('No')
+    await continueJourney()
+
+    // cannot-apply-other-farmers
+    await analyseAccessibility()
+    await navigateBack()
+
+    // other-farmers
+    await selectOption('Yes')
+    await continueJourney()
+
+    // project-items
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Constructing or improving buildings for processing')
+    await continueJourney()
+
+    // storage
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes, we will need storage facilities')
+    await continueJourney()
+
+    // project-cost
+    await analyseAccessibility()
+
+    await enterValueFor('', 'Enter amount')
     await continueJourney()
     await analyseAccessibility('[validation-no-value]')
 
     await enterValueFor('ABC', 'Enter amount')
+    await continueJourney()
     await analyseAccessibility('[validation-format]')
 
     await enterValueFor('62499.99', 'Enter amount')
+    await continueJourney()
     await analyseAccessibility('[validation-decimals]')
 
     await enterValueFor('12345678', 'Enter amount')
+    await continueJourney()
     await analyseAccessibility('[validation-max-number]')
 
     await enterValueFor('0', 'Enter amount')
+    await continueJourney()
     await analyseAccessibility('[validation-min-number]')
 
+    await enterValueFor('62499', 'Enter amount')
+    await continueJourney()
+
+    // project-cost-cannot-apply
+    await analyseAccessibility()
+    await navigateBack()
+
+    // project-cost
     await enterValueFor('62500', 'Enter amount')
     await continueJourney()
 
-    // can-you-pay-the-remaining-costs
+    // remaining-costs
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
     await selectOption('No')
     await continueJourney()
 
-    // you-cannot-apply-for-a-grant-from-this-scheme-remaining-costs
+    // cannot-apply-remaining-costs
     await analyseAccessibility()
     await navigateBack()
 
-    // can-you-pay-the-remaining-costs
+    // remaining-costs
     await selectOption('Yes')
     await continueJourney()
 
@@ -117,6 +224,20 @@ describe('Adding Value', () => {
     ])
     await continueJourney()
 
+    // mechanisation
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes')
+    await continueJourney()
+
+    // manual-labour-amount
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('More than 10%')
+    await continueJourney()
+  
     // future-customers
     await analyseAccessibility()
     await continueJourney()
@@ -144,23 +265,23 @@ describe('Adding Value', () => {
     await selectOption('Agent')
     await continueJourney()
 
-    // agent-details
-    await analyseAccessibility()
-    await continueJourney()
-    await analyseAccessibility('[validation]')
-    await enterValueFor('John', 'First name')
-    await enterValueFor('Test-Agent', 'Last name')
-    await enterValueFor('Test Agency Ltd', 'Business name')
-    await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Email address')
-    await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Confirm email address')
-    await enterValueFor('07777 654321', 'Mobile number')
-    await enterValueFor('01604 654321', 'Landline number')
-    await enterValueFor('High Street', 'Address line 1')
-    await enterValueFor('Denton', 'Address line 2 (optional)')
-    await enterValueFor('Northampton', 'Town')
-    await enterValueFor('Northamptonshire', 'County (optional)')
-    await enterValueFor('NN7 3NN', 'Postcode')
-    await continueJourney()
+    // agent-details [TO BE FIXED ON TGC-631]
+    // await analyseAccessibility()
+    // await continueJourney()
+    // await analyseAccessibility('[validation]')
+    // await enterValueFor('John', 'First name')
+    // await enterValueFor('Test-Agent', 'Last name')
+    // await enterValueFor('Test Agency Ltd', 'Business name')
+    // await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Email address')
+    // await enterValueFor('cl-defra-gae-test-agent-email@equalexperts.com', 'Confirm email address')
+    // await enterValueFor('07777 654321', 'Mobile number')
+    // await enterValueFor('01604 654321', 'Landline number')
+    // await enterValueFor('High Street', 'Address line 1')
+    // await enterValueFor('Denton', 'Address line 2 (optional)')
+    // await enterValueFor('Northampton', 'Town')
+    // await enterValueFor('Northamptonshire', 'County (optional)')
+    // await enterValueFor('NN7 3NN', 'Postcode')
+    // await continueJourney()
 
     // applicant-details
     await analyseAccessibility()

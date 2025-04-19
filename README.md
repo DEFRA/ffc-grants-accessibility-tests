@@ -1,22 +1,25 @@
 # ffc-grants-accessibility-tests
 
-This repository contains accessibility tests covering individual FFC Grants application journeys. The tests do not fail but will generate reports detailing WCAG violations and recommendations for each journey.
+This is the accessibility test suite for non-land based grant application journeys maintained by Grant Application Enablement. The tests do not assert but will generate reports detailing WCAG violations and recommendations for each journey.
 
-The tests use WebdriverIO alongside the Defra CCTS WCAG checker library. See https://dev.azure.com/defragovuk/CCTS-QA%20Automation/_wiki/wikis/CCTS-QA-Automation.wiki/31058/WCAG-Checker-for-accessibility-automation
+The suite uses WebdriverIO with the Defra CCTS WCAG checker library. See https://dev.azure.com/defragovuk/CCTS-QA%20Automation/_wiki/wikis/CCTS-QA-Automation.wiki/31058/WCAG-Checker-for-accessibility-automation. The checker has been modified to pass in a local WAVE rules file over downloading it due to current issues downloading the file in the CDP Portal. These issues may be resolved when the checker is officially integrated into CDP.
 
-### Running locally
+## Running the test suite
 
-Set the `baseUrl` in `wdio.local.conf.js` to an instance of service `forms-runner-v2`, either hosted or local, and run the following command. 
+There are 2 WebdriverIO config files:
 
 ```bash
+wdio.local.conf.js
+------------------
+# used to run tests locally using a local instance of Chrome
 npm run test:local
 ```
 
-Reports are written to `./reports`.
-
-### CDP Portal
-
-Tests are run from the CDP Portal under the `Test Suites` section. Before any changes can be run, a new docker image must be built, this will happen automatically when a pull request is merged into the `main` branch. The reports from the test run are then available through the portal.
+```bash
+wdio.conf.js
+------------
+# used to run tests in the portal against the hosted Chrome instance
+```
 
 ### Licence
 
