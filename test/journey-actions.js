@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 
 export async function confirmAndSend() {
-    await $(`aria/Confirm and send`).click()
+    await $(`//button[contains(text(),'Confirm and send')]`).click()
 }
 
 export async function continueJourney() {

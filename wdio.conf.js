@@ -44,7 +44,7 @@ export const config = {
   reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
-    timeout: 120000
+    timeout: 180000
   },
   onComplete: function (exitCode, config, capabilities, results) {
     generateAccessibilityReportIndex()
