@@ -1,4 +1,3 @@
-import { browser } from '@wdio/globals'
 import * as wcagChecker from './wcagchecker.cjs'
 import fs from 'fs'
 import path from 'path'

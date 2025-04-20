@@ -1,6 +1,5 @@
-import { browser } from '@wdio/globals'
 import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
-import { confirmAndSend, continueJourney, enterValueFor, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
+import { confirmAndSend, continueJourney, ensureUrl, enterValueFor, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
 
 describe('Adding Value', () => {
   it('should analyse accessibility on all Adding Value pages', async () => {
@@ -9,10 +8,12 @@ describe('Adding Value', () => {
     await browser.url('/adding-value/start')
 
     // start
+    await ensureUrl('start')
     await analyseAccessibility()
     await startJourney()
 
     // nature-of-business
+    await ensureUrl('nature-of-business')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -20,14 +21,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // cannot-apply-nature-of-business
+    await ensureUrl('cannot-apply-nature-of-business')
     await analyseAccessibility()
     await navigateBack()
 
     // nature-of-business
+    await ensureUrl('nature-of-business')
     await selectOption('A grower or producer of agricultural or horticultural produce')
     await continueJourney()
 
     // legal-status
+    await ensureUrl('legal-status')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -35,14 +39,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // legal-status-cannot-apply
+    await ensureUrl('legal-status-cannot-apply')
     await analyseAccessibility()
     await navigateBack()
 
     // legal-status
+    await ensureUrl('legal-status')
     await selectOption('Sole trader')
     await continueJourney()
 
     // country
+    await ensureUrl('country')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -50,14 +57,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // cannot-apply-country
+    await ensureUrl('cannot-apply-country')
     await analyseAccessibility()
     await navigateBack()
 
     // country
+    await ensureUrl('country')
     await selectOption('Yes')
     await continueJourney()
 
     // planning-permission
+    await ensureUrl('planning-permission')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -65,14 +75,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // planning-permission-cannot-apply
+    await ensureUrl('planning-permission-cannot-apply')
     await analyseAccessibility()
     await navigateBack()
 
     // planning-permission
+    await ensureUrl('planning-permission')
     await selectOption('Secured')
     await continueJourney()
 
     // project-start
+    await ensureUrl('project-start')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -80,14 +93,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // cannot-apply-project-start
+    await ensureUrl('cannot-apply-project-start')
     await analyseAccessibility()
     await navigateBack()
 
     // project-start
+    await ensureUrl('project-start')
     await selectOption('Yes, preparatory work')
     await continueJourney()
 
     // tenancy
+    await ensureUrl('tenancy')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -95,6 +111,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // tenancy-length
+    await ensureUrl('tenancy-length')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -102,10 +119,12 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // may-apply-tenancy-length
+    await ensureUrl('may-apply-tenancy-length')
     await analyseAccessibility()
     await continueJourney()
 
     // smaller-abattoir
+    await ensureUrl('smaller-abattoir')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -113,16 +132,19 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // fruit-storage
+    await ensureUrl('fruit-storage')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
     await navigateBack() // navigate back to smaller abattoir journey
 
     // smaller-abattoir
+    await ensureUrl('smaller-abattoir')
     await selectOption('Yes') // take smaller abattoir journey
     await continueJourney()
 
     // other-farmers
+    await ensureUrl('other-farmers')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -130,14 +152,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // cannot-apply-other-farmers
+    await ensureUrl('cannot-apply-other-farmers')
     await analyseAccessibility()
     await navigateBack()
 
     // other-farmers
+    await ensureUrl('other-farmers')
     await selectOption('Yes')
     await continueJourney()
 
     // project-items
+    await ensureUrl('project-items')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -145,6 +170,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // storage
+    await ensureUrl('storage')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -152,6 +178,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // project-cost
+    await ensureUrl('project-cost')
     await analyseAccessibility()
 
     await enterValueFor('', 'Enter amount')
@@ -178,14 +205,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // project-cost-cannot-apply
+    await ensureUrl('project-cost-cannot-apply')
     await analyseAccessibility()
     await navigateBack()
 
     // project-cost
+    await ensureUrl('project-cost')
     await enterValueFor('62500', 'Enter amount')
     await continueJourney()
 
     // remaining-costs
+    await ensureUrl('remaining-costs')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -193,14 +223,17 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // cannot-apply-remaining-costs
+    await ensureUrl('cannot-apply-remaining-costs')
     await analyseAccessibility()
     await navigateBack()
 
     // remaining-costs
+    await ensureUrl('remaining-costs')
     await selectOption('Yes')
     await continueJourney()
 
-    // products-processed
+    // produce-processed
+    await ensureUrl('produce-processed')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -208,6 +241,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // adding-value
+    await ensureUrl('adding-value')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -215,16 +249,18 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // project-impact
+    await ensureUrl('project-impact')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
-    await selectOptions([
+    await selectOptions(
       'Increasing range of added-value products',
       'Increasing volume of added-value products'
-    ])
+    )
     await continueJourney()
 
     // mechanisation
+    await ensureUrl('mechanisation')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -232,6 +268,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // manual-labour-amount
+    await ensureUrl('manual-labour-amount')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -239,26 +276,32 @@ describe('Adding Value', () => {
     await continueJourney()
   
     // future-customers
+    await ensureUrl('future-customers')
     await analyseAccessibility()
     await continueJourney()
 
     // collaboration
+    await ensureUrl('collaboration')
     await analyseAccessibility()
     await continueJourney()
 
     // environmental-impact
+    await ensureUrl('environmental-impact')
     await analyseAccessibility()
     await continueJourney()
 
     // score-results
+    await ensureUrl('score-results')
     await analyseAccessibility()
     await continueJourney()
 
     // business-details
+    await ensureUrl('business-details')
     await analyseAccessibility()
     await continueJourney()
 
-    // who-is-applying-for-this-grant
+    // applying
+    await ensureUrl('applying')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -266,6 +309,7 @@ describe('Adding Value', () => {
     await continueJourney()
 
     // agent-details [TO BE FIXED ON TGC-631]
+    // await ensureUrl('agent-details')
     // await analyseAccessibility()
     // await continueJourney()
     // await analyseAccessibility('[validation]')
@@ -284,6 +328,7 @@ describe('Adding Value', () => {
     // await continueJourney()
 
     // applicant-details
+    await ensureUrl('applicant-details')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -301,15 +346,18 @@ describe('Adding Value', () => {
     await enterValueFor('NN7 2NN', 'Project postcode')
     await continueJourney()
 
-    // check-your-details
+    // check-details
+    await ensureUrl('check-details')
     await analyseAccessibility()
     await continueJourney()
 
     // declaration
+    await ensureUrl('declaration')
     await analyseAccessibility()
     await confirmAndSend()
 
     // confirmation
+    await ensureUrl('confirmation')
     await analyseAccessibility()
 
     generateAccessibilityReports('adding-value')
