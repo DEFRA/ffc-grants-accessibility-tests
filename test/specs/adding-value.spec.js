@@ -81,7 +81,12 @@ describe('Adding Value', () => {
 
     // planning-permission
     await ensureUrl('planning-permission')
-    await selectOption('Secured')
+    await selectOption('Should be in place by the time I make my full application')
+    await continueJourney()
+
+    // planning-permission-may-apply
+    await ensureUrl('planning-permission-may-apply')
+    await analyseAccessibility()
     await continueJourney()
 
     // project-start
