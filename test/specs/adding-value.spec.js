@@ -221,6 +221,7 @@ describe('Adding Value', () => {
 
     // potential-funding
     await ensureUrl('potential-funding')
+    await analyseAccessibility()
     await continueJourney()
 
     // remaining-costs
