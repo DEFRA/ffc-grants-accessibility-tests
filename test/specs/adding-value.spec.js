@@ -219,6 +219,10 @@ describe('Adding Value', () => {
     await enterValueFor('62500', 'Enter amount')
     await continueJourney()
 
+    // potential-funding
+    await ensureUrl('potential-funding')
+    await continueJourney()
+
     // remaining-costs
     await ensureUrl('remaining-costs')
     await analyseAccessibility()
