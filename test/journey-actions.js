@@ -26,7 +26,7 @@ export async function enterValueFor(text, label) {
     } else {
         await $(selector).setValue(text)
     }
-} 
+}
 
 export async function navigateBack() {
     await $(`//a[@class='govuk-back-link']`).click()
@@ -48,6 +48,12 @@ export async function startJourney() {
 
 export async function submitApplication() {
     await $(`aria/Send`).click()
+}
+
+export async function unselectOption(option) {
+    if (await $(`aria/${option}`).isSelected()) {
+        await $(`aria/${option}`).click()
+    }
 }
 
 async function pollForSuccess(predicate) {

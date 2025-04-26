@@ -34,14 +34,14 @@ describe('Example Grant', () => {
     await selectOption('A grower or producer of agricultural or horticultural produce'),
     await continueJourney()
 
-    // // summary [TO BE FIXED]
-    // await ensureUrl('summary')
-    // await analyseAccessibility()
-    // await submitApplication()
+    // summary
+    await ensureUrl('summary')
+    await analyseAccessibility()
+    await submitApplication()
 
-    // // status
-    // await ensureUrl('status')
-    // await analyseAccessibility()
+    // status
+    await ensureUrl('status')
+    await analyseAccessibility()
 
     generateAccessibilityReports('example-grant')
   });

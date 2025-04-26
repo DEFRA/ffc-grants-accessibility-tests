@@ -1,5 +1,5 @@
 import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
-import { confirmAndSend, continueJourney, ensureUrl, enterValueFor, navigateBack, selectOption, selectOptions, startJourney } from '../journey-actions.js'
+import { confirmAndSend, continueJourney, ensureUrl, enterValueFor, navigateBack, selectOption, selectOptions, startJourney, unselectOption } from '../journey-actions.js'
 
 describe('Adding Value', () => {
   it('should analyse accessibility on all Adding Value pages', async () => {
@@ -171,6 +171,17 @@ describe('Adding Value', () => {
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
+    await selectOption('None of the above')
+    await continueJourney()
+
+    // cannot-apply-project-items
+    await ensureUrl('cannot-apply-project-items')
+    await analyseAccessibility()
+    await navigateBack()
+
+    // project-items
+    await ensureUrl('project-items')
+    await unselectOption('None of the above')
     await selectOption('Constructing or improving buildings for processing')
     await continueJourney()
 
