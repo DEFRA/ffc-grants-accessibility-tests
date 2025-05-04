@@ -1,5 +1,3 @@
-import { expect } from 'chai'
-
 export async function confirmAndSend() {
     await $(`//button[contains(text(),'Confirm and send')]`).click()
 }
@@ -9,13 +7,7 @@ export async function continueJourney() {
 }
 
 export async function ensureUrl(url) {
-    var actualUrl
-    const doesActualUrlEndWithExpectedPath = await pollForSuccess(async () => {
-        actualUrl = await browser.getUrl()
-        return await actualUrl.endsWith(url)
-    })
-
-    expect(doesActualUrlEndWithExpectedPath, `Expected URL to be: ${url} but was: ${actualUrl}`).to.be.true
+    await expect(browser).toHaveUrl(expect.stringContaining(url))
 }
 
 export async function enterValueFor(text, label) {
@@ -54,17 +46,4 @@ export async function unselectOption(option) {
     if (await $(`aria/${option}`).isSelected()) {
         await $(`aria/${option}`).click()
     }
-}
-
-async function pollForSuccess(predicate) {
-    const pollingLimit = 10
-    const pollingIntervalSeconds = 1
-
-    for (let i = 0; i < pollingLimit; i++) {
-        if (await predicate()) {
-            return true
-        }
-        await new Promise((resolve) => setTimeout(resolve, pollingIntervalSeconds * 1000))
-    }
-    return false
 }

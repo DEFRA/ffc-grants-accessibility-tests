@@ -16,7 +16,6 @@
     "@wdio/mocha-framework": "9.9.0",
     "@wdio/spec-reporter": "9.9.0",
     "axe-core": "^4.10.2",
-    "chai": "5.2.0",
     "date-fns": "^4.1.0"
   }
 }
