@@ -1,4 +1,4 @@
-import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
+import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility-checking.js'
 import { confirmAndSend, continueJourney, ensureUrl, enterValueFor, navigateBack, selectOption, selectOptions, startJourney, unselectOption } from '../journey-actions.js'
 
 describe('Adding Value', () => {

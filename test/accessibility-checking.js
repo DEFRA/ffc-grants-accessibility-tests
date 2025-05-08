@@ -1,4 +1,4 @@
-import * as wcagChecker from './wcagchecker.cjs'
+import * as wcagChecker from '../dist/wcagchecker.js'
 import fs from 'fs'
 import path from 'path'
 
@@ -9,8 +9,7 @@ export async function initialiseAccessibilityChecking() {
         fs.mkdirSync(reportDirectory);
     }
 
-    const waveScript = fs.readFileSync('./test/accessibility/wave.min.js', { encoding: 'utf8', flag: 'r' })
-    await wcagChecker.init(browser, waveScript)
+    await wcagChecker.init(browser)
 }
 
 export async function analyseAccessibility(suffix) {    

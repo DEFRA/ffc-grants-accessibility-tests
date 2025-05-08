@@ -1,4 +1,4 @@
-import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility/accessibility-checking.js'
+import { initialiseAccessibilityChecking, analyseAccessibility, generateAccessibilityReports } from '../accessibility-checking.js'
 import { continueJourney, ensureUrl, navigateBack, selectOption, startJourney, submitApplication } from '../journey-actions.js'
 
 describe('Example Grant', () => {

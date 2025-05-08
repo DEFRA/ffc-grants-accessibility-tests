@@ -1,4 +1,4 @@
-import { generateAccessibilityReportIndex } from './test/accessibility/accessibility-checking.js'
+import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
 
 export const config = {
   hostname: process.env.CHROMEDRIVER_URL || '127.0.0.1',
@@ -44,7 +44,7 @@ export const config = {
   reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
-    timeout: 180000
+    timeout: 300000
   },
   onComplete: function (exitCode, config, capabilities, results) {
     generateAccessibilityReportIndex()

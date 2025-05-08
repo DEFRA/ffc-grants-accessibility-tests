@@ -1,4 +1,4 @@
-import { generateAccessibilityReportIndex } from './test/accessibility/accessibility-checking.js'
+import { generateAccessibilityReportIndex } from './test/accessibility-checking.js'
 
 export const config = {
     baseUrl: `https://grants-ui.test.cdp-int.defra.cloud`,
@@ -18,7 +18,7 @@ export const config = {
     reporters: ['spec'],
     mochaOpts: {
         ui: 'bdd',
-        timeout: 180000
+        timeout: 300000
     },
     onComplete: function(exitCode, config, capabilities, results) {
         generateAccessibilityReportIndex()
