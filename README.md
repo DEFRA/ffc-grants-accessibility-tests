@@ -2,7 +2,7 @@
 
 This is the accessibility test suite for non-land based grant application journeys maintained by Grant Application Enablement. The tests do not assert but will generate reports detailing WCAG violations and recommendations for each journey.
 
-The suite uses WebdriverIO with the Defra CCTS WCAG checker library. See https://dev.azure.com/defragovuk/CCTS-QA%20Automation/_wiki/wikis/CCTS-QA-Automation.wiki/31058/WCAG-Checker-for-accessibility-automation. The checker has been modified to pass in a local WAVE rules file over downloading it due to current issues downloading the file in the CDP Portal. These issues may be resolved when the checker is officially integrated into CDP.
+The suite uses WebdriverIO with the Defra CCTS WCAG checker library. See https://dev.azure.com/defragovuk/CCTS-QA%20Automation/_wiki/wikis/CCTS-QA-Automation.wiki/31058/WCAG-Checker-for-accessibility-automation.
 
 ## Running the test suite
 
