@@ -166,12 +166,12 @@ describe('Adding Value', () => {
     await selectOption('Yes')
     await continueJourney()
 
-    // project-items
-    await ensureUrl('project-items')
+    // project-items-needed
+    await ensureUrl('project-items-needed')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
-    await selectOption('None of the above')
+    await selectOption('No')
     await continueJourney()
 
     // cannot-apply-project-items
@@ -179,9 +179,16 @@ describe('Adding Value', () => {
     await analyseAccessibility()
     await navigateBack()
 
+    // project-items-needed
+    await ensureUrl('project-items-needed')
+    await selectOption('Yes')
+    await continueJourney()
+
     // project-items
     await ensureUrl('project-items')
-    await unselectOption('None of the above')
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
     await selectOption('Constructing or improving buildings for processing')
     await continueJourney()
 
@@ -261,8 +268,8 @@ describe('Adding Value', () => {
     await selectOption('Arable produce')
     await continueJourney()
 
-    // adding-value
-    await ensureUrl('adding-value')
+    // how-adding-value
+    await ensureUrl('how-adding-value')
     await analyseAccessibility()
     await continueJourney()
     await analyseAccessibility('[validation]')
@@ -295,20 +302,51 @@ describe('Adding Value', () => {
     await analyseAccessibility('[validation]')
     await selectOption('More than 10%')
     await continueJourney()
+
+    // future-customers-exist
+    await ensureUrl('future-customers-exist')
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes')
+    await continueJourney()
   
     // future-customers
     await ensureUrl('future-customers')
     await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOptions(
+      'Processors',
+      'Wholesalers'
+    )
     await continueJourney()
 
     // collaboration
     await ensureUrl('collaboration')
     await analyseAccessibility()
     await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes')
+    await continueJourney()
+
+    // environmental-impact-exist
+    await ensureUrl('environmental-impact-exist')
+    await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOption('Yes')
+    await continueJourney()
 
     // environmental-impact
     await ensureUrl('environmental-impact')
     await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
+    await selectOptions(
+      'Water efficiency',
+      'Sustainable packaging measures'
+    )
     await continueJourney()
 
     // score-results
