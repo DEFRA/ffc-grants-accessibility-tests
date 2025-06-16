@@ -38,6 +38,10 @@ export async function startJourney() {
     await $(`aria/Start now`).click()
 }
 
+export async function selectTask(taskName) {
+    await $(`//h2[@class='govuk-heading-m']/following-sibling::ul/li/div/a[contains(text(),'${taskName}')]`).click()
+}
+
 export async function submitApplication() {
     await $(`aria/Send`).click()
 }
