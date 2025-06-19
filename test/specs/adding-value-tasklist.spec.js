@@ -15,18 +15,24 @@ describe('Adding Value Task List', () => {
     // business-status/nature-of-business
     await ensureUrl('business-status/nature-of-business')
     await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
     await selectOption('A grower or producer of agricultural or horticultural produce')
     await continueJourney()
 
     // business-status/legal-status
     await ensureUrl('business-status/legal-status')
     await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
     await selectOption('Sole trader')
     await continueJourney()
 
     // business-status/country
     await ensureUrl('business-status/country')
     await analyseAccessibility()
+    await continueJourney()
+    await analyseAccessibility('[validation]')
     await selectOption('Yes')
     await continueJourney()
 
